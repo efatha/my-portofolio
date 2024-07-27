@@ -25,6 +25,7 @@ Experience the live demo of the portfolio website [https://efatha.github.io/my-p
 > We welcome contributions! To contribute:
 
 Fork the repository.
+Create a new branch (git checkout -b feature-branch).
 Commit your changes (git commit -m 'Add some feature').
 Push to the branch (git push origin feature-branch).
 Open a pull request.
@@ -32,6 +33,6 @@ Open a pull request.
 # Contact
 *For questions, suggestions, or feedback, feel free to reach out:*
 
-Email: [efathabyamungu4@gmail.com](efathabyamungu4@gmail.com)
+Email: [mailto:efathabyamungu4@gmail.com](efathabyamungu4@gmail.com)
 Upwork: [https://www.upwork.com/freelancers/~01f4543035bc52ff94?viewMode=1](Upwork)
 GitHub: [https://github.com/efatha](https://github.com/efatha)
