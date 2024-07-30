@@ -230,7 +230,16 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .efa-border-dark-grey,.efa-hover-border-dark-grey:hover,.efa-border-dark-gray,.efa-hover-border-dark-gray:hover{border-color:#616161!important}
 .efa-border-pale-red,.efa-hover-border-pale-red:hover{border-color:#ffe7e7!important}.efa-border-pale-green,.efa-hover-border-pale-green:hover{border-color:#e7ffe7!important}
 .efa-border-pale-yellow,.efa-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.efa-border-pale-blue,.efa-hover-border-pale-blue:hover{border-color:#e7ffff!important}
-
+.efa-black{
+    
+    border-radius: 2px 20px;
+    align-items:center;
+}
+.efa-white{
+   /* text-indent:-20%;*/
+    border-radius:8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
  body{
     background-color:#3a3a3a;
 }
