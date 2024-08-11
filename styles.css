@@ -236,3 +236,51 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .efa-black{
     border-radius:12px 2px;
 }
+  .efa-main {
+            margin-left: 320px;
+            padding: 16px;
+        }
+ .efa-main header {
+            background-color: #acacac;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+  .efa-sidebar{
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #f8f8f8;
+            overflow: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .efborder {
+            background-color: #fff;
+            padding: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .efborder img {
+            margin-top: 8px;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+input:hover{
+  border-radius:10px 5px 5px 10px;
+  box-shadow:0 0 10px rgba(19, 41, 38, 0.6) ;
+  border-color:#63645d;
+}
+ input[type="text"],input[type="email"],textarea,select{
+  border:2px solid #cccccc;/* Light gray border for a clean look*/
+  border-radius:4px;/* Rounded corners for a modern feel*/
+  padding:10px;/* Adequate padding for better readability*/
+  font-size:16px;/* Comfortable front size for the text inputs*/
+  width:100%;/* Full width to align with the container*/
+  box-sizing: border-box;/* Ensures padding and border are included in the element's total width and height*/
+  transition:border-color 0.4s ease-in-out,box-shadow 0.4s ease-in-out;/* Smooth transition for border color and shadow on hover and focus*/
+}
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Raleway", sans-serif;
+}
