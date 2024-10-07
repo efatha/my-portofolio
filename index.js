@@ -4,4 +4,5 @@ ScrollReveal().reveal('.efa-container', {
     easing: 'ease-in-out',
     origin: 'bottom',
     interval: 200,
+    reset:true,
   });
