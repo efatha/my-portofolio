@@ -1,4 +1,4 @@
-ScrollReveal().reveal('.efa-container', {
+ScrollReveal().reveal('.efa-row-padding', {
     duration: 1000,
     distance: '50px',
     easing: 'ease-in-out',
