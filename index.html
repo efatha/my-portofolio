@@ -97,10 +97,10 @@
       </div>
     </div>
     <div class="efa-third efa-container efborder">
-      <img src="image/IMG-20240405-WA0004.jpg" alt="fromVivo" style="width:100%" class="efa-hover-opacity">
+      <a href="https://efatha.github.io/HomeQuest-Email-Template/"><img src="image/IMG-20240405-WA0004.jpg" alt="fromVivo" style="width:100%" class="efa-hover-opacity"></a>
       <div class="efa-container efa-white">
-        <p><b>My tools</b></p>
-        <p>I use this laptop to code on my projects.  Completed various freelance projects for clients, ranging from small business websites to custom web applications. Each project involved close collaboration with clients to meet their specific needs.</p>
+        <p><b>HomeQuest-Email-Template</b></p>
+        <p>I use this laptop to code on my projects. Completed various freelance projects for clients, ranging from small business websites to custom web applications. Notably, I developed an 'Email Template HomeQuest' project, which involved creating a professional and user-friendly email design to enhance client communication. Each project involved close collaboration with clients to meet their specific needs. </p>
       </div>
     </div>
   </div>
@@ -230,22 +230,23 @@
       </div>
     </div>
     <hr class="efa-opacity">
-    <form action="mailto:efathabyamungu4@gmail.com" target="_blank">
-      <div class="efa-section">
-        <label>Name</label>
-        <input class="efa-input efa-border" type="text" name="Name" required>
-      </div>
-      <div class="efa-section">
-        <label>Email</label>
-        <input class="efa-input efa-border" type="text" name="Email" required>
-      </div>
-      <div class="efa-section">
-        <label>Message</label>
-        <input class="efa-input efa-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="efa-button efa-black efa-margin-bottom"><i class="fa fa-paper-plane efa-margin-right"></i>Send Message</button>
-    </form>
+    <form action="process-form.php" method="post" id="contact-form">
+  <div class="efa-section">
+    <label>Name</label>
+    <input class="efa-input efa-border" type="text" name="Name" required>
   </div>
+  <div class="efa-section">
+    <label>Email</label>
+    <input class="efa-input efa-border" type="email" name="Email" required>
+  </div>
+  <div class="efa-section">
+    <label>Message</label>
+    <textarea class="efa-input efa-border" name="Message" required></textarea>
+  </div>
+  <button type="submit" class="efa-button efa-black efa-margin-bottom">
+    <i class="fa fa-paper-plane efa-margin-right"></i>Send Message
+  </button>
+</form>
 
   <!-- Footer -->
   <footer class="efa-container efa-padding-32 efa-dark-grey">
