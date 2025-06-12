@@ -19,7 +19,7 @@ JavaScript
 Bootstrap`
 
 # Demo
-Experience the live demo of the portfolio website [https://efatha.github.io/my-portfolio/](https://efatha.github.io/my-portfolio/)
+Experience the live demo of the portfolio website [https://efatha.github.io/my-portofolio/](https://efatha.github.io/my-portofolio/)
 
 # Contributing
 > We welcome contributions! To contribute:
