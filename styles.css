@@ -284,3 +284,33 @@ input:hover{
 body,h1,h2,h3,h4,h5,h6 {
     font-family: "Raleway", sans-serif;
 }
+.efa-round, .efa-sidebar h4{
+  animation-duration: 1.7s;
+  animation-name: slideProfile;
+}
+@keyframes slideProfile {
+  from {
+    translate: 50vw 0;
+    scale: 150% 1;
+  }
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
+
+.efa-bar-block, .efa-container .efa-white b {
+  display: inline-block;
+  animation-duration: 3s;
+  animation-name: grow-shrink;
+}
+@keyframes grow-shrink {
+  15%,
+  50% {
+    scale: 100%;
+  }
+  30% {
+    scale: 130%;
+    color: #acacac;
+  }
+}
