@@ -109,12 +109,12 @@
   <!-- Pagination -->
   <div class="efa-center efa-padding-32">
     <div class="efa-bar">
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">«</a>
-      <a href="#" class="efa-bar-item efa-black efa-button">1</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">2</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">3</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">4</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">»</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="changePage(-1)">«</a>
+      <a href="#" class="efa-bar-item efa-black efa-button" onclick="goToPage(1)">1</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(2)">2</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(3)">3</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(4)">4</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="changePage(-1)">»</a>
     </div>
   </div>
 
@@ -235,16 +235,19 @@
     <hr class="efa-opacity">
     <form action="process-form.php" method="post" id="contact-form">
   <div class="efa-section">
-    <label>Name</label>
-    <input class="efa-input efa-border" type="text" name="Name" required>
+    <label>Name
+      <input class="efa-input efa-border" type="text" name="Name" required>
+    </label>
   </div>
   <div class="efa-section">
-    <label>Email</label>
-    <input class="efa-input efa-border" type="email" name="Email" required>
+    <label>Email
+      <input class="efa-input efa-border" type="email" name="Email" required>
+    </label>
   </div>
   <div class="efa-section">
-    <label>Message</label>
-    <textarea class="efa-input efa-border" name="Message" required></textarea>
+    <label>Message
+      <textarea class="efa-input efa-border" name="Message" required></textarea>
+    </label>
   </div>
   <button type="submit" class="efa-button efa-black efa-margin-bottom">
     <i class="fa fa-paper-plane efa-margin-right"></i>Send Message

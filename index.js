@@ -6,7 +6,34 @@ ScrollReveal().reveal('.efa-row-padding', {
     interval: 200,
     reset:true,
   });
-  
+
+let currentPage = 1;
+
+function setActivePage(page) {
+  const buttons = document.querySelectorAll('.efa-bar-item');
+  buttons.forEach(btn => btn.classList.remove('efa-black')); // remove active style
+
+  // Update the active button
+  const activeBtn = Array.from(buttons).find(btn => btn.textContent.trim() == page);
+  if (activeBtn) activeBtn.classList.add('efa-black');
+
+  currentPage = page;
+}
+
+// When user clicks a pagination button
+function goToPage(page) {
+  if (page < 1 || page > 2) return; // only 2 pages for now
+  setActivePage(page);
+  // Here you can call your image update function if needed
+}
+
+// When user clicks previous or next
+function changePage(direction) {
+  const newPage = currentPage + direction;
+  goToPage(newPage);
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // Collect the six project nodes (firstGrid's .efa-third and secondGrid's .efa-third)
   const firstGrid = document.querySelector(".efa-row-padding.firstGrid");
