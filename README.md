@@ -34,5 +34,7 @@ Open a pull request.
 *For questions, suggestions, or feedback, feel free to reach out:*
 
 Email: [mailto:efathabyamungu4@gmail.com](efathabyamungu4@gmail.com)
+
 Upwork: [https://www.upwork.com/freelancers/~01f4543035bc52ff94?viewMode=1](Upwork)
+
 GitHub: [https://github.com/efatha](https://github.com/efatha)
