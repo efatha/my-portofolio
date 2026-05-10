@@ -71,11 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Define the second set of data (placeholders). Replace these with your real links & text.
   // There must be exactly 6 objects here (one per item).
   const page2 = [
-    { imgSrc: "image/efaculator1.png", imgAlt: "new1", titleHTML: "Efaculator", descHTML: "The Simple Calculator project delivers a user-friendly, web-based application for performing essential arithmetic operations, including addition, subtraction, multiplication, and division." },
+    { imgSrc: "image/efaculator1.png", imgAlt: "new1", titleHTML: "Efaculator", descHTML: "The Simple Calculator project delivers a user-friendly, web-based application for performing essential arithmetic operations, including addition, subtraction, multiplication, and division.", link: "https://efatha.github.io/Efaculator/" },
     { imgSrc: "image/EGT.png", imgAlt: "new2", titleHTML: "Goods Tracker", descHTML: "Track your goods and finances with clarity. EGT keeps your records accurate and accessible." },
-    { imgSrc: "image/HomeQuestEmailTemplate.png", imgAlt: "new3", titleHTML: "HomeQuest-Email-Template", descHTML: "Completed various freelance projects for clients, ranging from small business websites to custom web applications. Notably, I developed an 'Email Template HomeQuest' project, which involved creating a professional and user-friendly email design to enhance client communication. Each project involved close collaboration with clients to meet their specific needs." },
-    { imgSrc: "image/SmartNote.png", imgAlt: "new4", titleHTML: "MemoWise", descHTML: "Memo Wise is a modern, intuitive note-taking and reminder web application designed to help users capture ideas, organize thoughts, and manage tasks effectively. Developed using HTML, CSS, and JavaScript, the project features a clean and responsive interface that allows users to create, edit, delete, and categorize notes seamlessly." },
-    { imgSrc: "image/study.png", imgAlt: "new5", titleHTML: "Project E", descHTML: "Description for Project E." },
+    { imgSrc: "image/HomeQuestEmailTemplate.png", imgAlt: "new3", titleHTML: "HomeQuest-Email-Template", descHTML: "Completed various freelance projects for clients, ranging from small business websites to custom web applications. Notably, I developed an 'Email Template HomeQuest' project, which involved creating a professional and user-friendly email design to enhance client communication. Each project involved close collaboration with clients to meet their specific needs.", link: "https://efatha.github.io/Goodtracker/"  },
+    { imgSrc: "image/SmartNote.png", imgAlt: "new4", titleHTML: "MemoWise", descHTML: "Memo Wise is a modern, intuitive note-taking and reminder web application designed to help users capture ideas, organize thoughts, and manage tasks effectively. Developed using HTML, CSS, and JavaScript, the project features a clean and responsive interface that allows users to create, edit, delete, and categorize notes seamlessly.", link: "https://stirring-alfajores-d31cd2.netlify.app/" },
+    { imgSrc: "image/study.png", imgAlt: "new5", titleHTML: "CommonBlog.com", descHTML: "CommonBlog is a community-driven platform designed to encourage meaningful conversations, idea sharing, and collaboration among people with common interests.", link: "https://real-time-multi-user.onrender.com" },
     { imgSrc: "image/book.png", imgAlt: "new6", titleHTML: "Project F", descHTML: "Description for Project F." }
   ];
 
@@ -139,9 +139,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const ps = el.querySelectorAll(".efa-container p");
       const descEl = ps[1] || ps[0];
       if (descEl) descEl.innerHTML = data.descHTML || "";
+
+     // Added next link site page setup 
+     el.onclick = null; // reset previous behavior
+     if (data.link) {
+      el.onclick = (e) => {
+        window.open(data.link, "_blank");
+    };
+  }
     });
   }
-
   // event handlers
   async function switchToPage2(e) {
     if (e) e.preventDefault();
