@@ -181,3 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Handle the iframe scroll event to adjust height dynamically
+document.addEventListener("DOMContentLoaded", function () {
+    ScrollReveal().reveal('#radar-spiral', {
+      delay: 100,
+      duration: 1400,                    // Slightly extended duration for a graceful spiral twist
+      opacity: 0,
+      scale: 0.1,                        // Starts compact at the exact center of its container
+      rotate: {
+        x: 0,
+        y: 0,
+        z: -180                          // Unwinds a half-turn as it scales up
+      },
+      easing: 'cubic-bezier(0.25, 1, 0.3, 1)', // Snappy startup that slows down smoothly at the finish line
+      viewFactor: 0.10,                  // Triggers precisely when 10% of the placeholder enters the viewport
+      mobile: true,                      // Keeps the transition functional on handheld screens
+      reset: false                       // Locks the animation in place once completed
+    });
+  });
