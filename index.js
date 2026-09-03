@@ -35,6 +35,31 @@ function changePage(direction) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.querySelector("#contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = contactForm.querySelector("button[type=submit]");
+      submitButton.disabled = true;
+
+      try {
+        const response = await fetch("https://portfolio-api.onrender.com/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+        });
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        contactForm.reset();
+        alert("Your message was sent successfully.");
+      } catch (error) {
+        console.error(error);
+        alert("We could not send your message. Please try again later.");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   // Collect the six project nodes (firstGrid's .efa-third and secondGrid's .efa-third)
   const firstGrid = document.querySelector(".efa-row-padding.firstGrid");
   const secondGrid = document.querySelector(".efa-row-padding.secondGrid");
