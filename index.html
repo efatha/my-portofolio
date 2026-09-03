@@ -3,7 +3,6 @@
 <title>Efatha Rutakaza | Portfolio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="4/efa.css">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/x-icon" href="image/efathap.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -291,6 +290,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <textarea class="efa-input efa-border" name="message" required></textarea>
       </div>
       <button type="submit" class="efa-button efa-black efa-margin-bottom"><i class="fa fa-paper-plane efa-margin-right"></i>Send Message</button>
+      <p id="contact-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 
@@ -349,6 +349,41 @@ function efa_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+
+document.getElementById("contact-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const submitButton = form.querySelector("button[type=submit]");
+  const status = document.getElementById("contact-status");
+  const formData = new FormData(form);
+
+  submitButton.disabled = true;
+  status.textContent = "Sending...";
+
+  try {
+    const response = await fetch("https://my-portofolio-backend.onrender.com/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message")
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("The message could not be sent.");
+    }
+
+    form.reset();
+    status.textContent = "Message sent successfully.";
+  } catch (error) {
+    status.textContent = "Unable to send your message. Please try again later.";
+  } finally {
+    submitButton.disabled = false;
+  }
+});
 </script>
 
 </body>
