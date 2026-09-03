@@ -8,9 +8,9 @@ services:
     healthCheckPath: /actuator/health
     envVars:
       - key: SPRING_DATASOURCE_URL
-        sync: false
+        value: jdbc:postgresql://dpg-dacltgvqj5pc73dc89u0-a/my_portofolio
       - key: SPRING_DATASOURCE_USERNAME
-        sync: false
+        value: my_portofolio_user
       - key: SPRING_DATASOURCE_PASSWORD
         sync: false
       - key: SPRING_FLYWAY_ENABLED
