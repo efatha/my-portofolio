@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: my-portofolio-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-dacltgvqj5pc73dc89u0-a/my_portofolio
+      - key: SPRING_DATASOURCE_USERNAME
+        value: my_portofolio_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: SPRING_FLYWAY_ENABLED
+        value: "true"
+      - key: APP_FRONTEND_ORIGIN
+        value: https://efatha.github.io
