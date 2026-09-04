@@ -1,60 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <title>Efatha Rutakaza | Portfolio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/x-icon" href="image/efathap.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<!--<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<style>
-  .efa-main {
-            margin-left: 320px;
-            padding: 16px;
-        }
- .efa-main header {
-            background-color: #acacac;
-            padding: 16px;
-            margin-bottom: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-  .efa-sidebar{
-            width: 300px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background-color: #f8f8f8;
-            overflow: auto;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .efborder {
-            background-color: #fff;
-            padding: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .efborder img {
-            margin-top: 8px;
-            max-width: 100%;
-            border-radius: 8px;
-        }
-input:hover{
-  border-radius:10px 5px 5px 10px;
-  box-shadow:0 0 10px rgba(19, 41, 38, 0.6) ;
-  border-color:#63645d;
-}
- input[type="text"],input[type="email"],textarea,select{
-  border:2px solid #cccccc;/* Light gray border for a clean look*/
-  border-radius:4px;/* Rounded corners for a modern feel*/
-  padding:10px;/* Adequate padding for better readability*/
-  font-size:16px;/* Comfortable front size for the text inputs*/
-  width:100%;/* Full width to align with the container*/
-  box-sizing: border-box;/* Ensures padding and border are included in the element's total width and height*/
-  transition:border-color 0.4s ease-in-out,box-shadow 0.4s ease-in-out;/* Smooth transition for border color and shadow on hover and focus*/
-}
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-</style>
+<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <body class="efa-light-grey efa-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
@@ -63,7 +15,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#" onclick="efa_close()" class="efa-hide-large efa-right efa-jumbo efa-padding efa-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
-    <img src="image/efathap.png" style="width:45%;" class="efa-round"><br><br>
+    <img src="image/efathap.png" style="width:45%;" class="efa-round" alt="profile"><br><br>
     <h4><b>Efatha Rutakaza</b></h4>
     <p class="efa-text-grey">Web Developer & Designer</p>
   </div>
@@ -90,7 +42,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header id="portfolio">
-    <a href="#"><img src="image/efathag.jpg" style="width:50%;"class="efa-circle efa-right efa-margin efa-hide-large efa-hover-opacity"></a>
+    <a href="#"><img src="image/efathag.jpg" style="width:35%;" height="190px" class="efa-circle efa-right efa-margin efa-hide-large efa-hover-opacity" alt="efakamp"></a>
     <span class="efa-button efa-hide-large efa-xxlarge efa-hover-text-grey" onclick="efa_open()"><i class="fa fa-bars"></i></span>
     <div class="efa-container">
     <h1><b>My Portfolio</b></h1>
@@ -105,51 +57,51 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </header>
   
   <!-- First Photo Grid-->
-  <div class="efa-row-padding">
+  <div class="efa-row-padding firstGrid">
     <div class="efa-third efa-container efa-margin-bottom efborder">
-      <img src="image/efathakmpl.jpg" alt="Norway" style="width:100%" class="efa-hover-opacity">
+      <a href="https://efatha.github.io/News-homepage-main/"><img src="image/desktop-preview.jpg" alt="day" style="width:100%" class="efa-hover-opacity"></a>
       <div class="efa-container efa-white">
-        <p><b>My web experience</b></p>
-        <p>Welcome to my portofolio! I'm Efatha Rutakaza, a web developer and a web designer,  Nowadays, specializing in Front-end developement. With a stong foundation in HTML5, CSS3, JavaScript and Bootstrap, I strive to create visually appealling and user-friendly websites.</p>
+        <p><b>The News Homepage project</b></p>
+        <p>The primary goal is to create a user-friendly interface that effectively presents news content, ensuring a seamless experience across various devices. This project showcases my skills in front-end development, including HTML, CSS, and JavaScript, as well as my ability to create modern, user-centric websites that effectively communicate complex information.</p>
       </div>
     </div>
     <div class="efa-third efa-container efa-margin-bottom efborder">
-      <img src="image/efathab.jpg" alt="Norway" style="width:100%" class="efa-hover-opacity">
+     <a href="https://e-chatai.onrender.com"><img src="image/e-chatByEfathaRutakaza.png" alt="Norway" style="width:100%" class="efa-hover-opacity"></a> 
       <div class="efa-container efa-white">
-        <p><b>Skills</b></p>
-        <p>HTML & CSS: Proficient in HTML5 and CSS3, I can create clean, semantic code that ensures accessibility and responsiveness across various devices and platforms. JavaScript: Experienced in JavaScript, including ES6+, I can build interactive and dynamic web applications. My knowledge extends to popular libraries and frameworks like React</p>
+        <p><b>E-CHAT – AI Chat Assistant</b> <i>by Efatha</i> </p>
+        <p>E-CHAT is a sleek, AI-powered chatbot interface designed for fast, smart, and intuitive digital communication. With a futuristic look and responsive layout, it blends tech and design into a clean user experience.</p>
       </div>
     </div>
     <div class="efa-third efa-container efborder">
-      <img src="image/IMG_20240112_122822.jpg" alt="Norway" style="width:100%" class="efa-hover-opacity">
+      <a href="https://ecommerce-product-page-eosin.vercel.app/"><img src="image/desktop-preview (2).jpg" alt="kamp" style="width:100%" class="efa-hover-opacity"></a>
       <div class="efa-container efa-white">
-        <p><b>Expertise</b></p>
-        <p>Responsive Design: I prioritize mobile-first design principles to ensure that websites function flawlessly on all screen sizes, providing a seamless user experience. I am skilled in optimizing website performance through techniques like lazy loading, code splitting, and using modern build tools like Webpack.</p>
+        <p><b>My web experience/ E-commerce</b></p>
+        <p> With a stong foundation in HTML5, CSS3 and JavaScript, I've built this increadible designed web e-commerce which is one of the biggest challenges for developers in frontend mentor, from pure JavaScript I strive to create visually appealling and user-friendly websites by leveraging my skills.</p>
       </div>
     </div>
   </div>
   
   <!-- Second Photo Grid-->
-  <div class="efa-row-padding">
+  <div class="efa-row-padding secondGrid">
     <div class="efa-third efa-container efa-margin-bottom efborder">
-      <img src="image/book.png" alt="Norway" style="width:100%" class="efa-hover-opacity">
+      <a href="https://efatha.github.io/English-Dictionary-by-Efatha/"><img src="image/freepik__make-a-book-design-on-which-its-written-efathas-di__99477.jpeg" alt="book" style="width:100%" class="efa-hover-opacity"></a>
       <div class="efa-container efa-white">
-        <p><b>Blog Platform</b></p>
-        <p>Created a blogging platform with a custom CMS using WordPress. The platform includes features like user authentication, content management, and SEO optimization.        </p>
+        <p><b>English Dictionary</b></p>
+        <p>This English Dictionary web application is designed to provide users with accurate and comprehensive definitions of English words. Utilizing a robust third-party dictionary API, either free or premium, the application ensures that users have access to reliable and up-to-date lexical information.  This project not only demonstrates my technical skills in web development and API integration but also highlights my ability to create practical, user-focused applications.        </p>
       </div>
     </div>
     <div class="efa-third efa-container efa-margin-bottom efborder">
-      <img src="image/study.png" alt="Norway" style="width:100%" class="efa-hover-opacity ">
+      <a href="https://efatha.github.io/Movie-shelter/"><img src="image/Landing Page.png" alt="study" style="width:100%" height="230px" class="efa-hover-opacity "></a> 
       <div class="efa-container efa-white">
-        <p><b>Cross-Browser Compatibility</b></p>
-        <p>I ensure that websites are compatible across different browsers, including Chrome, Firefox, Safari, and Edge, providing a consistent user experience.</p>
+        <p><b>Movie Shelter</b></p>
+        <p>I ensure that websites are compatible across different browsers, including Chrome, Firefox, Safari, and Edge, providing a consistent user experience. This project has demostrated my skills on handling APIs by implementing fetched Data in my web pages and tailor them smoothly</p>
       </div>
     </div>
     <div class="efa-third efa-container efborder">
-      <img src="image/IMG-20240405-WA0004.jpg" alt="Norway" style="width:100%" class="efa-hover-opacity">
+      <a href="https://efatha.github.io/Goodtracker/"><img src="image/EGT.png" alt="EGT" style="width:100%" class="efa-hover-opacity"></a>
       <div class="efa-container efa-white">
-        <p><b>My tools</b></p>
-        <p>I use this laptop to code on my projects.  Completed various freelance projects for clients, ranging from small business websites to custom web applications. Each project involved close collaboration with clients to meet their specific needs.</p>
+        <p><b>Goods Tracker - EGT</b></p>
+        <p>Track your goods and finances with clarity. EGT keeps your records accurate and accessible. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere modi iure recusandae nisi provident ipsa sapiente ut voluptatem architecto. Repudiandae repellat unde doloremque atque culpa doloribus eligendi nemo sapiente vel? </p>
       </div>
     </div>
   </div>
@@ -157,51 +109,69 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <!-- Pagination -->
   <div class="efa-center efa-padding-32">
     <div class="efa-bar">
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">«</a>
-      <a href="#" class="efa-bar-item efa-black efa-button">1</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">2</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">3</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">4</a>
-      <a href="#" class="efa-bar-item efa-button efa-hover-black">»</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="changePage(-1)">«</a>
+      <a href="#" class="efa-bar-item efa-black efa-button" onclick="goToPage(1)">1</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(2)">2</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(3)">3</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="goToPage(4)">4</a>
+      <a href="#" class="efa-bar-item efa-button efa-hover-black" onclick="changePage(-1)">»</a>
     </div>
   </div>
 
   <!-- Images of Me -->
   <div class="efa-row-padding efa-padding-16" id="about">
-    <div class="efa-col m6">
-      <img src="image/learn1144.png" alt="Me" style="width:100%">
+    <div class="efa-col m6 project-card">
+      <img src="image/learn1144.png" alt="Me" style="width:100%; height:100vh">
+      <p class="overlay">I blend creativity with code to build unforgettable web experiences. <em> Driven by design, powered by logic.</em></p>
     </div>
-    <div class="efa-col m6">
-      <img src="image/IMG_20230727_181618.jpg" alt="Me" style="width:100%">
+    <div class="efa-col m6 project-card">
+      <img src="image/efathab.jpg" alt="I" style="width:100%; height:100vh">
+      <p class="overlay">I turn ideas into beautiful user interfaces.</p>
     </div>
   </div>
 
   <div class="efa-container efa-padding-large" style="margin-bottom:32px">
     <h4><b>About Me</b></h4>
-    <p>I have been in the web development industry for over a year from now. My journey began with a fascination for coding and designing, which has now turned into a full-fledged career. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
+    <p>I have been in the web development industry for over 2 years. My journey began with a fascination for software engineering, coding, and design, which has now turned into a full-fledged career. I enjoy turning complex problems into simple, beautiful, and intuitive solutions.</p>
     <hr>
-    
     <h4>Technical Skills</h4>
     <!-- Progress bars / Skills -->
     <p>HTML5</p>
     <div class="efa-grey">
-      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:95%">95%</div>
+      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:99%">99%</div>
     </div>
     <p>CSS3 AND BOOTSTRAP</p>
     <div class="efa-grey">
-      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:90%">90%</div>
+      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:97%">97%</div>
+    </div>
+    <p>JAVASCRIPT</p>
+    <div class="efa-grey">
+      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:94%">94%</div>
+    </div>
+     <p>PYTHON</p>
+    <div class="efa-grey">
+      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:89%">89%</div>
     </div>
     <p>RESPONSIVE WEB DESIGN</p>
     <div class="efa-grey">
-      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:80%">80%</div>
+      <div class="efa-container efa-dark-grey efa-padding efa-center" style="width:96%">96%</div>
     </div>
     <p>
-      <button class="efa-button efa-dark-grey efa-padding-large efa-margin-top efa-margin-bottom">
+      <a href="./doc/EFATHA_RUTAKAZA_Resume.pdf" download="Efatha-Rutakaza-Resume.pdf" class="efa-button efa-dark-grey efa-padding-large efa-margin-top efa-margin-bottom" style="text-decoration:none;">
         <i class="fa fa-download efa-margin-right"></i>Download Resume
-      </button>
+      </a>
     </p>
     <hr>
-    
+    <div id="radar-spiral" class="efa-container efa-padding-large " style="display: block; clear: both; width: 100%;">
+    <iframe 
+      src="https://er-orbit.vercel.app/" 
+      style="display: block; width: 100%; max-width: 950px; height: 500px; border: 1px solid #333; border-radius: 8px; margin: 30px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;"
+      scrolling="no"
+      loading="lazy"
+      title="Interactive Project Radar">
+    </iframe>
+  </div>
+<hr style="clear: both;">
     <h4>How much I charge</h4>
     <!-- Pricing Tables -->
     <div class="efa-row-padding" style="margin:0 -16px">
@@ -213,8 +183,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <li class="efa-padding-16">1GB Storage</li>
           <li class="efa-padding-16">Mail Support</li>
           <li class="efa-padding-16">
-            <h2>$ 10</h2>
-            <span class="efa-opacity">per month</span>
+            <h2>$ 15</h2>
+            <span class="efa-opacity">per hour</span>
           </li>
           <li class="efa-light-grey efa-padding-24">
             <button class="efa-button efa-teal efa-padding-large efa-hover-black">Sign Up</button>
@@ -226,12 +196,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <ul class="efa-ul efa-border efa-white efa-center efa-opacity efa-hover-opacity-off">
           <li class="efa-teal efa-xlarge efa-padding-32">Pro</li>
           <li class="efa-padding-16">Web Design</li>
-          <li class="efa-padding-16">html and css</li>
+          <li class="efa-padding-16">Boostrap and Javascript</li>
           <li class="efa-padding-16">50GB Storage</li>
           <li class="efa-padding-16">Endless Support</li>
           <li class="efa-padding-16">
-            <h2>$ 25</h2>
-            <span class="efa-opacity">per month</span>
+            <h2>$ 20</h2>
+            <span class="efa-opacity">per hour</span>
           </li>
           <li class="efa-light-grey efa-padding-24">
             <button class="efa-button efa-teal efa-padding-large efa-hover-black">Sign Up</button>
@@ -243,12 +213,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <ul class="efa-ul efa-border efa-white efa-center efa-opacity efa-hover-opacity-off">
           <li class="efa-black efa-xlarge efa-padding-32">Premium</li>
           <li class="efa-padding-16">Web Design</li>
-          <li class="efa-padding-16">html and css</li>
+          <li class="efa-padding-16">Python Flask, Vanilla Javascript</li>
           <li class="efa-padding-16">Unlimited Storage</li>
           <li class="efa-padding-16">Endless Support</li>
           <li class="efa-padding-16">
             <h2>$ 25</h2>
-            <span class="efa-opacity">per month</span>
+            <span class="efa-opacity">per hour</span>
           </li>
           <li class="efa-light-grey efa-padding-24">
             <button class="efa-button efa-teal efa-padding-large efa-hover-black">Sign Up</button>
@@ -277,22 +247,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
     <hr class="efa-opacity">
     <form id="contact-form">
-      <div class="efa-section">
-        <label>Name</label>
-        <input class="efa-input efa-border" type="text" name="name" required>
-      </div>
-      <div class="efa-section">
-        <label>Email</label>
-        <input class="efa-input efa-border" type="email" name="email" required>
-      </div>
-      <div class="efa-section">
-        <label>Message</label>
-        <textarea class="efa-input efa-border" name="message" required></textarea>
-      </div>
-      <button type="submit" class="efa-button efa-black efa-margin-bottom"><i class="fa fa-paper-plane efa-margin-right"></i>Send Message</button>
-      <p id="contact-status" role="status" aria-live="polite"></p>
-    </form>
+  <div class="efa-section">
+    <label>Name
+      <input class="efa-input efa-border" type="text" name="name" required>
+    </label>
   </div>
+  <div class="efa-section">
+    <label>Email
+      <input class="efa-input efa-border" type="email" name="email" required>
+    </label>
+  </div>
+  <div class="efa-section">
+    <label>Message
+      <textarea class="efa-input efa-border" name="message" required></textarea>
+    </label>
+  </div>
+  <button type="submit" class="efa-button efa-black efa-margin-bottom">
+    <i class="fa fa-paper-plane efa-margin-right"></i>Send Message
+  </button>
+</form>
 
   <!-- Footer -->
   <footer class="efa-container efa-padding-32 efa-dark-grey">
@@ -307,12 +280,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <h3>BLOG POSTS</h3>
       <ul class="efa-ul efa-hoverable">
         <li class="efa-padding-16">
-          <a href="https://efatha.github.io/pastry.nas/"><img src="image/IMG_20240113_144720.jpg" class="efa-left efa-margin-right" style="width:50px">
+          <a href="https://efatha.github.io/pastry.nas/"><img src="image/IMG_20240113_144720.jpg" class="efa-left efa-margin-right" style="width:50px" alt="madeByEfatha">
           <span class="efa-large">blog</span><br>
           <span>Made by efatha</span></a>
         </li>
         <li class="efa-padding-16">
-          <a href="https://www.freecodecamp.org/certification/efatha/responsive-web-design"><img src="image/learn.png" class="efa-left efa-margin-right" style="width:50px">
+          <a href="https://www.freecodecamp.org/certification/efatha/responsive-web-design"><img src="image/learn.png" class="efa-left efa-margin-right" style="width:50px" alt="myCertification">
           <span class="efa-large">Certification</span><br>
           <span>freecodecamp</span></a>
         </li> 
@@ -323,10 +296,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <h3>POPULAR TAGS</h3>
       <p>
         <span class="efa-tag efa-black efa-margin-bottom">Travel</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">New York</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">London</span>
-        <span class="efa-tag efa-grey efa-small efa-margin-bottom">IKEA</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">NORWAY</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">DIY</span>
+        <span class="efa-tag efa-grey efa-small efa-margin-bottom">Ug</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">NORWAY</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Texas, Houston</span>
         <span class="efa-tag efa-grey efa-small efa-margin-bottom">Ideas</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Baby</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Family</span>
-        <span class="efa-tag efa-grey efa-small efa-margin-bottom">News</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Clothing</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Shopping</span>
-        <span class="efa-tag efa-grey efa-small efa-margin-bottom">Sports</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Games</span>
+        <span class="efa-tag efa-grey efa-small efa-margin-bottom">News</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">AI</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Faith</span>
+        <span class="efa-tag efa-grey efa-small efa-margin-bottom">Software testing</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Cloud</span>
+        <span class="efa-tag efa-grey efa-small efa-margin-bottom">Technology</span> <span class="efa-tag efa-grey efa-small efa-margin-bottom">Music & Games</span>
       </p>
     </div>
 
@@ -338,7 +312,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <!-- End page content -->
 </div>
 
-<script>
+<!--JavaScript-->
+<!--<script>
 // Script to open and close sidebar
 function efa_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -349,43 +324,9 @@ function efa_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-
-document.getElementById("contact-form").addEventListener("submit", async function (event) {
-  event.preventDefault();
-
-  const form = event.currentTarget;
-  const submitButton = form.querySelector("button[type=submit]");
-  const status = document.getElementById("contact-status");
-  const formData = new FormData(form);
-
-  submitButton.disabled = true;
-  status.textContent = "Sending...";
-
-  try {
-    const response = await fetch("https://my-portofolio-backend.onrender.com/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message")
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error("The message could not be sent.");
-    }
-
-    form.reset();
-    status.textContent = "Message sent successfully.";
-  } catch (error) {
-    status.textContent = "Unable to send your message. Please try again later.";
-  } finally {
-    submitButton.disabled = false;
-  }
-});
-</script>
-
+</script>-->
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="index.js"></script>
 </body>
 
 <!-- Mirrored from www.efaschools.com/efacss/tryit.asp?filename=tryefacss_templates_portfolio&stacked=h by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Jan 2020 01:36:24 GMT -->
