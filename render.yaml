@@ -8,7 +8,7 @@ services:
     healthCheckPath: /actuator/health
     envVars:
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:postgresql://ep-sparkling-sunset-ayo4o7ls-pooler.c-5.us-east-2.aws.neon.tech/my_portofolio_db?sslmode=require&channel_binding=require
+        value: jdbc:postgresql://ep-noisy-math-a5nke6fl-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       - key: SPRING_DATASOURCE_USERNAME
         value: neondb_owner
       - key: SPRING_DATASOURCE_PASSWORD
