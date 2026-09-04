@@ -5,4 +5,6 @@ CREATE TABLE contact_messages (
     message TEXT NOT NULL,
     submitted_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-CREATE INDEX idx_contact_messages_submitted_at ON contact_messages (submitted_at DESC);
+
+CREATE INDEX idx_contact_messages_submitted_at
+    ON contact_messages (submitted_at DESC);
