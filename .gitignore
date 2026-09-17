@@ -1,6 +1,17 @@
 .env
 .env.example
 backend/.env
+*.log
+logs/
+backend/logs/
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*secret*
+*credentials*
 backend/target/
 .idea/
 .vscode/
