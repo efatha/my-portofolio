@@ -8,13 +8,15 @@ ScrollReveal().reveal('.efa-row-padding', {
   });
 
 let currentPage = 1;
+let totalPages = 1;
+let renderPortfolioPage = null;
 
 function setActivePage(page) {
-  const buttons = document.querySelectorAll('.efa-bar-item');
+  const buttons = document.querySelectorAll('#pagination .efa-bar-item');
   buttons.forEach(btn => btn.classList.remove('efa-black')); // remove active style
 
   // Update the active button
-  const activeBtn = Array.from(buttons).find(btn => btn.textContent.trim() == page);
+  const activeBtn = Array.from(buttons).find(btn => btn.dataset.page == page);
   if (activeBtn) activeBtn.classList.add('efa-black');
 
   currentPage = page;
@@ -22,9 +24,9 @@ function setActivePage(page) {
 
 // When user clicks a pagination button
 function goToPage(page) {
-  if (page < 1 || page > 2) return; // only 2 pages for now
+  if (page < 1 || page > totalPages) return;
   setActivePage(page);
-  // Here you can call your image update function if needed
+  if (renderPortfolioPage) renderPortfolioPage(page);
 }
 
 // When user clicks previous or next
@@ -61,17 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Collect the six project nodes (firstGrid's .efa-third and secondGrid's .efa-third)
-  const firstGrid = document.querySelector(".efa-row-padding.firstGrid");
-  const secondGrid = document.querySelector(".efa-row-padding.secondGrid");
   const items = Array.from(
     document.querySelectorAll(".efa-row-padding.firstGrid .efa-third, .efa-row-padding.secondGrid .efa-third")
   );
-
-  // Find pagination buttons by their visible text
-  const paginationLinks = Array.from(document.querySelectorAll(".efa-bar .efa-bar-item"));
-  const btnPrev = paginationLinks.find(a => a.textContent.trim() === "«") || null;
-  const btnOne  = paginationLinks.find(a => a.textContent.trim() === "1") || null;
-  const btnTwo  = paginationLinks.find(a => a.textContent.trim() === "2") || null;
 
   // Transition duration (ms)
   const DURATION = 500;
@@ -88,28 +82,48 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       imgSrc: img ? img.getAttribute("src") : "",
       imgAlt: img ? img.getAttribute("alt") : "",
+      link: el.querySelector("a") ? el.querySelector("a").getAttribute("href") : "",
       titleHTML: titleEl ? titleEl.innerHTML : "",
       descHTML: descEl ? descEl.innerHTML : ""
     };
   });
 
-  // Define the second set of data (placeholders). Replace these with your real links & text.
-  // There must be exactly 6 objects here (one per item).
   const page2 = [
     { imgSrc: "image/efaculator1.png", imgAlt: "new1", titleHTML: "Efaculator", descHTML: "The Simple Calculator project delivers a user-friendly, web-based application for performing essential arithmetic operations, including addition, subtraction, multiplication, and division.", link: "https://efatha.github.io/Efaculator/" },
     { imgSrc: "image/EGT.png", imgAlt: "new2", titleHTML: "Goods Tracker", descHTML: "Track your goods and finances with clarity. EGT keeps your records accurate and accessible.", link: "https://efatha.github.io/Goodtracker/"  },
     { imgSrc: "image/HomeQuestEmailTemplate.png", imgAlt: "new3", titleHTML: "HomeQuest-Email-Template", descHTML: "Completed various freelance projects for clients, ranging from small business websites to custom web applications. Notably, I developed an 'Email Template HomeQuest' project, which involved creating a professional and user-friendly email design to enhance client communication. Each project involved close collaboration with clients to meet their specific needs.", link: "https://efatha.github.io/HomeQuest-Email-Template/"  },
     { imgSrc: "image/SmartNote.png", imgAlt: "new4", titleHTML: "MemoWise", descHTML: "Memo Wise is a modern, intuitive note-taking and reminder web application designed to help users capture ideas, organize thoughts, and manage tasks effectively. Developed using HTML, CSS, and JavaScript, the project features a clean and responsive interface that allows users to create, edit, delete, and categorize notes seamlessly.", link: "https://stirring-alfajores-d31cd2.netlify.app/" },
     { imgSrc: "image/study.png", imgAlt: "new5", titleHTML: "CommonBlog.com", descHTML: "CommonBlog is a community-driven platform designed to encourage meaningful conversations, idea sharing, and collaboration among people with common interests.", link: "https://real-time-multi-user.onrender.com" },
-    { imgSrc: "image/book.png", imgAlt: "new6", titleHTML: "Project F", descHTML: "Description for Project F." }
+    { imgSrc: "image/freepik__make-a-book-design-on-which-its-written-efathas-di__99477.jpeg", imgAlt: "English Dictionary", titleHTML: "English Dictionary", descHTML: "This English Dictionary web application provides accurate definitions through a responsive, user-focused interface connected to a dictionary API. It demonstrates practical API integration, clear information design, and accessible web development.", link: "https://efatha.github.io/English-Dictionary-by-Efatha/" }
   ];
 
-  // Safety: ensure we have 6 items and 6 data objects
+  const projectCatalog = [...original, ...page2];
+  const pageSize = items.length;
+  const projectPages = [];
+  for (let index = 0; index < projectCatalog.length; index += pageSize) {
+    projectPages.push(projectCatalog.slice(index, index + pageSize));
+  }
+  totalPages = projectPages.length;
+
   if (items.length !== 6) {
     console.warn("Expected 6 project items but found", items.length, ". Script will still try to operate on what exists.");
   }
-  if (page2.length < items.length) {
-    console.warn("page2 array length is less than the number of items. Some items will be left unchanged.");
+  const pagination = document.querySelector("#pagination");
+  if (pagination) {
+    pagination.innerHTML = [
+      { label: "«", page: "previous" },
+      ...projectPages.map((_, index) => ({ label: String(index + 1), page: index + 1 })),
+      { label: "»", page: "next" }
+    ].map(({ label, page }) => `<a href="#portfolio" class="efa-bar-item efa-button efa-hover-black" data-page="${page}">${label}</a>`).join("");
+
+    pagination.addEventListener("click", event => {
+      const link = event.target.closest("a");
+      if (!link) return;
+      event.preventDefault();
+      if (link.dataset.page === "previous") changePage(-1);
+      else if (link.dataset.page === "next") changePage(1);
+      else goToPage(Number(link.dataset.page));
+    });
   }
 
   // Set transitions for each item for smoother cross-fade
@@ -143,8 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = dataArray[idx];
       if (!data) return; // skip if no data provided
 
-      // Update image
+      // Keep each card's image and destination in sync with its carousel page.
       const img = el.querySelector("img");
+      const anchor = el.querySelector("a");
+      if (anchor) anchor.setAttribute("href", data.link || "#");
       if (img) {
         // quick fade for image itself (keeps parent opacity animation smooth)
         img.style.opacity = "0";
@@ -165,43 +181,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const descEl = ps[1] || ps[0];
       if (descEl) descEl.innerHTML = data.descHTML || "";
 
-     // Added next link site page setup 
-     el.onclick = null; // reset previous behavior
-     if (data.link) {
-      el.onclick = (e) => {
-        window.open(data.link, "_blank");
-    };
-  }
     });
   }
-  // event handlers
-  async function switchToPage2(e) {
-    if (e) e.preventDefault();
+
+  async function renderPage(page) {
     await fadeOutAll();
-    applyDataToItems(page2);
+    applyDataToItems(projectPages[page - 1]);
     await fadeInAll();
-    console.log("Updated all 6 items to page 2 data.");
+    setActivePage(page);
   }
 
-  async function restorePage1(e) {
-    if (e) e.preventDefault();
-    await fadeOutAll();
-    applyDataToItems(original);
-    await fadeInAll();
-    console.log("Restored original 6 items.");
-  }
-
-  // Attach events if buttons exist
-  if (btnTwo) btnTwo.addEventListener("click", switchToPage2);
-  if (btnOne) btnOne.addEventListener("click", restorePage1);
-  if (btnPrev) btnPrev.addEventListener("click", restorePage1);
+  renderPortfolioPage = renderPage;
+  applyDataToItems(projectPages[0]);
+  setActivePage(1);
 
   // Optional: keyboard left/right support
   document.addEventListener("keydown", (ev) => {
     if (ev.key === "ArrowRight") {
-      if (btnTwo) switchToPage2();
+      changePage(1);
     } else if (ev.key === "ArrowLeft") {
-      restorePage1();
+      changePage(-1);
     }
   });
 });
