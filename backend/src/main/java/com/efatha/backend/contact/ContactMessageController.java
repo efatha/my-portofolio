@@ -1,7 +1,6 @@
 package com.efatha.backend.contact;
 
 import jakarta.validation.Valid;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +24,7 @@ public class ContactMessageController {
     ) {
         ContactMessageResponse body = service.create(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header(HttpHeaders.SERVER_TIMING, body.serverTiming())
+                .header("Server-Timing", body.serverTiming())
                 .body(body);
     }
 }
