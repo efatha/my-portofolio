@@ -19,17 +19,9 @@ public class ContactMessageService {
             ContactMessageRepository repository,
             ApplicationEventPublisher events
     ) {
-        this(repository, events, Clock.systemUTC());
-    }
-
-    ContactMessageService(
-            ContactMessageRepository repository,
-            ApplicationEventPublisher events,
-            Clock clock
-    ) {
         this.repository = repository;
         this.events = events;
-        this.clock = clock;
+        this.clock = Clock.systemUTC();
     }
 
     @Transactional
