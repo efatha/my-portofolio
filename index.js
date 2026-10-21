@@ -36,31 +36,190 @@ function changePage(direction) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const contactForm = document.querySelector("#contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const submitButton = contactForm.querySelector("button[type=submit]");
-      submitButton.disabled = true;
+const CONTACT_API = "https://my-portofolio-j8da.onrender.com/api/contact";
+const PIPELINE_STEPS = ["validate", "persist", "notify", "receipt"];
+const PIPELINE_META = {
+  validate: "Jakarta Bean Validation",
+  persist: "PostgreSQL",
+  notify: "Accepted event",
+  receipt: "Ticket id"
+};
 
-      try {
-        const response = await fetch("https://my-portofolio-j8da.onrender.com/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
-        });
-        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-        contactForm.reset();
-        alert("Your message was sent successfully.");
-      } catch (error) {
-        console.error(error);
-        alert("We could not send your message. Please try again later.");
-      } finally {
-        submitButton.disabled = false;
-      }
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function wait(ms) {
+  if (prefersReducedMotion() || ms <= 0) return Promise.resolve();
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function bindContactPipeline() {
+  const form = document.querySelector("#contact-form");
+  const pipeline = document.querySelector("#contact-pipeline");
+  const receipt = document.querySelector("#contact-receipt");
+  const errorBox = document.querySelector("#contact-error");
+  if (!form || !pipeline || !receipt) return;
+
+  const submitButton = form.querySelector("button[type=submit]");
+  const steps = PIPELINE_STEPS.map((name) => pipeline.querySelector(`[data-step="${name}"]`));
+
+  function setError(message) {
+    if (!errorBox) return;
+    if (!message) {
+      errorBox.textContent = "";
+      errorBox.hidden = true;
+      return;
+    }
+    errorBox.textContent = message;
+    errorBox.hidden = false;
+  }
+
+  function setReceipt(text) {
+    receipt.textContent = text;
+  }
+
+  function resetSteps() {
+    steps.forEach((step, index) => {
+      if (!step) return;
+      step.classList.remove("is-done", "is-current", "is-error");
+      step.removeAttribute("aria-current");
+      const meta = step.querySelector(".contact-pipeline-meta");
+      if (meta) meta.textContent = PIPELINE_META[PIPELINE_STEPS[index]];
     });
   }
+
+  function markStep(name, state, metaText) {
+    const index = PIPELINE_STEPS.indexOf(name);
+    const step = steps[index];
+    if (!step) return;
+    step.classList.remove("is-done", "is-current", "is-error");
+    if (state) step.classList.add(state);
+    if (state === "is-current") step.setAttribute("aria-current", "step");
+    else step.removeAttribute("aria-current");
+    if (metaText) {
+      const meta = step.querySelector(".contact-pipeline-meta");
+      if (meta) meta.textContent = metaText;
+    }
+  }
+
+  function clientTicket(data) {
+    if (data && data.ticketId) return data.ticketId;
+    if (data && data.id != null) return "msg_" + Number(data.id).toString(16);
+    return "msg_received";
+  }
+
+  function stageDuration(data, name) {
+    const stages = data && Array.isArray(data.stages) ? data.stages : [];
+    const stage = stages.find((item) => item.name === name);
+    return stage && typeof stage.durationMs === "number" ? stage.durationMs : null;
+  }
+
+  form.addEventListener("input", () => {
+    if (errorBox && !errorBox.hidden) setError("");
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setError("");
+    resetSteps();
+    submitButton.disabled = true;
+    form.setAttribute("aria-busy", "true");
+
+    const payload = Object.fromEntries(new FormData(form));
+    if (!payload.name.trim() || !payload.email.trim() || !payload.message.trim()) {
+      markStep("validate", "is-error", "Required fields");
+      setReceipt("Stopped at validate");
+      setError("Name, email, and message are required.");
+      submitButton.disabled = false;
+      form.removeAttribute("aria-busy");
+      return;
+    }
+    if (!form.email.checkValidity()) {
+      markStep("validate", "is-error", "Invalid email");
+      setReceipt("Stopped at validate");
+      setError("Enter a valid email address.");
+      submitButton.disabled = false;
+      form.removeAttribute("aria-busy");
+      return;
+    }
+
+    markStep("validate", "is-current", "Checking fields");
+    setReceipt("Validate · checking fields");
+    await wait(180);
+    markStep("validate", "is-done", "Fields accepted");
+    markStep("persist", "is-current", "Writing to PostgreSQL");
+    setReceipt("Persist · POST /api/contact");
+
+    const started = performance.now();
+    try {
+      const response = await fetch(CONTACT_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(60000)
+      });
+      const elapsedMs = Math.round(performance.now() - started);
+      let data = {};
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
+
+      if (!response.ok) {
+        const failed = data.stage === "validate" ? "validate" : "persist";
+        if (failed === "validate") {
+          markStep("validate", "is-error", "Rejected");
+          markStep("persist", "", PIPELINE_META.persist);
+        } else {
+          markStep("persist", "is-error", "HTTP " + response.status);
+        }
+        setReceipt("Failed · HTTP " + response.status + " · " + elapsedMs + "ms");
+        setError(data.error || "The Java service rejected this message. Try again.");
+        return;
+      }
+
+      const persistMs = stageDuration(data, "persist");
+      const notifyMs = stageDuration(data, "notify");
+      const latency = typeof data.latencyMs === "number" ? data.latencyMs : elapsedMs;
+      const store = data.store || "PostgreSQL";
+      const ticket = clientTicket(data);
+
+      markStep("persist", "is-done", persistMs != null ? persistMs + "ms" : "Saved");
+      markStep("notify", "is-current", "Publishing accepted event");
+      setReceipt("Notify · accepted event");
+      await wait(160);
+      markStep("notify", "is-done", notifyMs != null ? notifyMs + "ms" : "Accepted");
+      markStep("receipt", "is-current", ticket);
+      await wait(120);
+      markStep("receipt", "is-done", ticket);
+      setReceipt(ticket + " · " + store + " · " + latency + "ms · " + response.status + " Created");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      const timedOut = error && (error.name === "TimeoutError" || error.name === "AbortError");
+      const local = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+      markStep("persist", "is-error", timedOut ? "Timed out" : local ? "CORS" : "Network");
+      if (timedOut) {
+        setReceipt("Failed · Java service timed out");
+        setError("The Java service did not respond in time. Try again in a moment.");
+      } else if (local) {
+        setReceipt("Failed · origin not allowed");
+        setError("This local page is blocked by CORS. Push the site, then send from https://efatha.github.io/my-portofolio/ to get a receipt.");
+      } else {
+        setReceipt("Failed · persist did not complete");
+        setError("Could not reach the Java service. Try again in a moment.");
+      }
+    } finally {
+      submitButton.disabled = false;
+      form.removeAttribute("aria-busy");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  bindContactPipeline();
 
   // Collect the six project nodes (firstGrid's .efa-third and secondGrid's .efa-third)
   const items = Array.from(

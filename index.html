@@ -3,7 +3,7 @@
 <title>Efatha Rutakaza | Portfolio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=pipeline">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -230,8 +230,9 @@
   </div>
   
   <!-- Contact Section -->
-  <div class="efa-container efa-padding-large efa-grey">
-    <h4 id="contact"><b>Contact Me</b></h4>
+  <div class="efa-container efa-padding-large efa-grey" id="contact">
+    <h4><b>Contact Me</b></h4>
+    <p class="contact-kicker">This form is a Java pipeline: Jakarta validation, PostgreSQL persist, an accepted event, then a receipt.</p>
     <div class="efa-row-padding efa-center efa-padding-24" style="margin:0 -16px">
       <div class="efa-third efa-dark-grey">
         <p><i class="fa fa-envelope efa-xxlarge efa-text-light-grey"></i></p>
@@ -246,27 +247,49 @@
         <p>767092548</p>
       </div>
     </div>
-    <hr class="efa-opacity">
-    <form id="contact-form">
-  <div class="efa-section">
-    <label>Name
-      <input class="efa-input efa-border" type="text" name="name" required>
-    </label>
+
+    <ol class="contact-pipeline" id="contact-pipeline" aria-label="Message pipeline">
+      <li data-step="validate">
+        <span class="contact-pipeline-name">Validate</span>
+        <span class="contact-pipeline-meta">Jakarta Bean Validation</span>
+      </li>
+      <li data-step="persist">
+        <span class="contact-pipeline-name">Persist</span>
+        <span class="contact-pipeline-meta">PostgreSQL</span>
+      </li>
+      <li data-step="notify">
+        <span class="contact-pipeline-name">Notify</span>
+        <span class="contact-pipeline-meta">Accepted event</span>
+      </li>
+      <li data-step="receipt">
+        <span class="contact-pipeline-name">Receipt</span>
+        <span class="contact-pipeline-meta">Ticket id</span>
+      </li>
+    </ol>
+    <p class="contact-receipt" id="contact-receipt" role="status">Idle · POST /api/contact · Java 17 · Spring Boot</p>
+
+    <form id="contact-form" novalidate>
+      <div class="efa-section">
+        <label for="contact-name">Name
+          <input id="contact-name" class="efa-input efa-border" type="text" name="name" maxlength="120" autocomplete="name" required>
+        </label>
+      </div>
+      <div class="efa-section">
+        <label for="contact-email">Email
+          <input id="contact-email" class="efa-input efa-border" type="email" name="email" maxlength="320" autocomplete="email" required>
+        </label>
+      </div>
+      <div class="efa-section">
+        <label for="contact-message">Message
+          <textarea id="contact-message" class="efa-input efa-border" name="message" maxlength="10000" required></textarea>
+        </label>
+      </div>
+      <p class="contact-error" id="contact-error" role="alert" hidden></p>
+      <button type="submit" class="efa-button efa-black efa-margin-bottom">
+        <i class="fa fa-paper-plane efa-margin-right"></i>Send Message
+      </button>
+    </form>
   </div>
-  <div class="efa-section">
-    <label>Email
-      <input class="efa-input efa-border" type="email" name="email" required>
-    </label>
-  </div>
-  <div class="efa-section">
-    <label>Message
-      <textarea class="efa-input efa-border" name="message" required></textarea>
-    </label>
-  </div>
-  <button type="submit" class="efa-button efa-black efa-margin-bottom">
-    <i class="fa fa-paper-plane efa-margin-right"></i>Send Message
-  </button>
-</form>
 
   <!-- Footer -->
   <footer class="efa-container efa-padding-32 efa-dark-grey">

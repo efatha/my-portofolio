@@ -1,17 +1,16 @@
 package com.efatha.backend.contact;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = "${app.frontend-origin}")
 public class ContactMessageController {
 
     private final ContactMessageService service;
@@ -21,8 +20,12 @@ public class ContactMessageController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ContactMessageResponse create(@Valid @RequestBody ContactMessageRequest request) {
-        return service.create(request);
+    public ResponseEntity<ContactMessageResponse> create(
+            @Valid @RequestBody ContactMessageRequest request
+    ) {
+        ContactMessageResponse body = service.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header(HttpHeaders.SERVER_TIMING, body.serverTiming())
+                .body(body);
     }
 }

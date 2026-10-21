@@ -16,4 +16,4 @@ services:
       - key: SPRING_FLYWAY_ENABLED
         value: "true"
       - key: APP_FRONTEND_ORIGIN
-        value: https://efatha.github.io
+        value: https://efatha.github.io,http://localhost:5000,http://127.0.0.1:5000
